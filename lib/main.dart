@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/server_setup_screen.dart';
+import 'screens/offline.dart';
 import 'services/jellyfin_service.dart';
 import 'utils/shared_preferences_helper.dart';
 
@@ -55,10 +56,16 @@ class _SplashScreenState extends State<SplashScreen> {
 
     final jellyfinService = JellyfinService(serverUrl);
     final serverIsReachable = await jellyfinService.pingServer();
+    final gotInternet = await jellyfinService.pingOnline();
 
     if (!serverIsReachable) {
       // Server is unreachable, navigate to Server Setup Screen
-      _navigateTo(ServerSetupScreen());
+      if (gotInternet) {
+        _navigateTo(ServerSetupScreen());
+      } else {
+        // No internet connection, navigate to Offline Screen
+        _navigateTo(OfflineViewing());
+      }
       return;
     }
 
@@ -89,7 +96,19 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: CircularProgressIndicator(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+                padding: const EdgeInsets.only(bottom: 16.0), // Add bottom padding
+                child: Text(
+                  'Finding a Beam...',
+                  style: TextStyle(fontFamily: 'Shrikhand', fontSize: 24),
+                ),
+            ),
+            CircularProgressIndicator()
+          ],
+        ),
       ),
     );
   }

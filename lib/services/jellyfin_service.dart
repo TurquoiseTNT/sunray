@@ -16,6 +16,15 @@ class JellyfinService {
     }
   }
 
+  Future<bool> pingOnline() async {
+    try {
+      final response = await http.get(Uri.parse('1.1.1.1'));
+      return response.statusCode == 200;
+    } catch (e) {
+      return false;
+    }
+  }
+
   Future<String> login(String username, String password) async {
     try {
       final deviceName = await AppUtils.getDeviceName();
