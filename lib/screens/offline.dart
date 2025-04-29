@@ -73,15 +73,6 @@ class _OfflineViewingState extends State<OfflineViewing> {
                       ),
                     ],
                   ),
-                  TextButton(
-                    onPressed: () async {
-                      Navigator.of(context).pushReplacementNamed('../main');
-                    },
-                    child: Text(
-                      'Reconnect',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
                 ],
               ),
             ),

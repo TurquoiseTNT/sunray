@@ -177,11 +177,11 @@ class _SettingsState extends State<Settings> {
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 16.0),
+                    padding: const EdgeInsets.only(bottom: 8.0, left: 1.0),
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Settings',
+                        'Change User',
                         style: TextStyle(fontFamily: 'Shrikhand', fontSize: 24),
                       ),
                     ),
@@ -257,6 +257,16 @@ class _SettingsState extends State<Settings> {
                             ),
                           ),
                         ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15.0, left: 1.0),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Settings',
+                        style: TextStyle(fontFamily: 'Shrikhand', fontSize: 24),
                       ),
                     ),
                   ),
