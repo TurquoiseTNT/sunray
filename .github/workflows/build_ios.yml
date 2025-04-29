@@ -16,9 +16,6 @@ jobs:
     - name: Install Flutter dependencies
       run: flutter pub get
 
-    - name: Fix App Name
-      run: dart run change_app_package_name:main one.turquoisetnt.sunray
-
     - name: Build iOS (no codesign)
       run: flutter build ios --release --no-codesign
 
