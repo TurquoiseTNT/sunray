@@ -1,4 +1,4 @@
-package com.example.sunray
+package one.turquoisetnt.sunray
 
 import io.flutter.embedding.android.FlutterActivity
 
